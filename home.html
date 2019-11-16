@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AMWI</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		body{
+			background: url('https://i.pinimg.com/originals/0a/d8/68/0ad8688dd8a3d55924dc884fc57646ad.jpg');
+			background-size: cover;
+			color:white;
+			background-attachment: fixed;
+		}
+	</style>
+</head>
+<body>
+<div class="container" style="background-color: rgba(4, 4, 5,0.4)">
+	<br>
+	<div class="container">
+		{% block content %}
+	<h1 style="text-align: center;"> </>Autonomous Malicious Website Identifier</h1>
+	<hr style="height: 20px; border-color: white;"><br>
+	<!-- <div class="jumbotron">
+		<h2>autonomous malicious website identifier to make this world a better place</h2>
+	</div> -->
+	<div class="card text-center" style="background-color: rgba(4, 4, 5,0.6); width: 70%;margin: 0 auto;">
+	  
+	  <div class="card-body" >
+	  
+	    <h4 class="card-title"> &lt;&#47;&gt; AWMI </h4>
+	    <hr style="height: 20px; border-color: white; width: 60%;margin: 20px auto;">
+	    <h6 class="card-text">AWMI is a web application which autonomously analyses websites to mark them malicious or not by Deep learning and NLP techniques</h6>
+	  </div>
+
+	  <div class="card-footer text-muted">
+	    <h5>fill the below form to start analysis</h5>
+	  </div>
+	
+		<form method="POST" action="" class="form-inline">
+
+		    {% csrf_token %}
+		    <div style="margin: 0 auto; width: 70%;">
+		    <div class="row">
+		    	
+		    </div>
+		    <div class="form-group ">
+		    	<input type="text" name="link" class="form-control" placeholder="Enter Website link here." style="width: 300px;" required> &nbsp;
+		    	<input type="number" name="crawllength" class="form-control" min="1" max="100" placeholder="crawl length" style="width: 130px;" required>&nbsp;
+				<button class="btn btn-success">Analyse</button>
+					
+
+		    </div>
+			</div>
+		</form>
+		<br>
+	
+	</div>
+	<br>
+	<h3 class="text-center">Analysis Report</h3>	    <hr style="height: 20px; border-color: white; width: 60%;margin: 20px auto;">
+	<h5 class="text-center">Root Link</h5>
+	<div style="width: 60%; margin: 0 auto;">
+		<table class="table table-bordered table-dark table-striped" >
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Field</th>
+		      <th scope="col">Value</th>
+		      
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>Website Link</td>
+		      <td>{{ mainlink.0 }}</td>
+		      
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td>No. of images</td>
+		      <td>{{ mainlink.2 }}</td>
+		      
+		    </tr>
+		    <tr>
+		      <th scope="row">3</th>
+		      <td>No. of links</td>
+		      <td>{{ mainlink.1 }}</td>
+		      
+		    </tr>
+		    <tr>
+		      <th scope="row">4</th>
+		      <td>Text Length</td>
+		      <td>{{ mainlink.3 }}</td>
+		      
+		    </tr>
+		    <tr>
+		      <th scope="row">5</th>
+		      <td>Arms Images</td>
+		      <td>{{ mainlink.4 }}&#37;</td>
+		      
+		    </tr>
+		    <tr>
+		      <th scope="row">6</th>
+		      <td>Hate Speech</td>
+		      <td>{{ mainlink.5 }}&#37;</td>
+		      
+		    </tr>
+		    
+		  </tbody>
+		</table>
+	</div><br>
+	<h5 class="text-center">Crawled Links</h5>
+
+	<div style="width: 80%; margin: 0 auto;">
+		<table class="table table-bordered table-dark table-hover" >
+		  <thead>
+		    <tr>
+		      
+		      <th scope="col">pagelink</th>
+		      <th scope="col">No. of links</th>
+		      <th scope="col">No. of Images</th>
+		      <th scope="col">Text length</th>
+		      <th scope="col">Arms Images</th>
+		      <th scope="col">Hate Speech</th>
+		      
+
+		      
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for res in results %}
+			    <tr>
+			    	
+			    	{% for item in res %}
+			    		<td>{{ item }}</td>
+			    	{% endfor %}  
+			    </tr>
+		    {% endfor %}
+		    
+		  </tbody>
+		</table>
+	</div>
+	{% endblock %}
+	</div>
+	<br><br><br><br>
+	
+</div>
+
+</body>
+</html>
